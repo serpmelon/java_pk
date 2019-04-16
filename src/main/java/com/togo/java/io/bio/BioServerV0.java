@@ -6,6 +6,8 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+import com.togo.java.io.constant.SocketConstant;
+
 /**
  * 
  * @author AI
@@ -16,11 +18,9 @@ import java.net.Socket;
  */
 public class BioServerV0 {
 
-	private static final int PORT = 5000;
-
 	public static void main(String[] args) throws Exception {
 
-		ServerSocket server = new ServerSocket(PORT);
+		ServerSocket server = new ServerSocket(SocketConstant.PORT);
 		System.out.println("server start");
 
 		Socket socket = server.accept();

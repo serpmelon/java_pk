@@ -5,6 +5,8 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
+import com.togo.java.io.constant.SocketConstant;
+
 /**
  * 
  * @author AI
@@ -15,12 +17,9 @@ import java.net.Socket;
  */
 public class BioSimpleClientV0 {
 
-	private static final int PORT = 5000;
-	private static final String HOST = "localhost";
-
 	public static void main(String[] args) throws Exception {
 
-		Socket client = new Socket(HOST, PORT);
+		Socket client = new Socket(SocketConstant.HOST, SocketConstant.PORT);
 
 		PrintWriter output = new PrintWriter(client.getOutputStream());
 		BufferedReader keyboard = new BufferedReader(new InputStreamReader(System.in, "utf-8"));
