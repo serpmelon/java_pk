@@ -3,6 +3,7 @@ package com.togo.java.io.nio;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
+import java.nio.ByteBuffer;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
@@ -56,5 +57,6 @@ public class NIOServerV0 {
 	private void read(SelectionKey key) {
 		
 		SocketChannel channel = (SocketChannel) key.channel();
+//		ByteBuffer buffer = 
 	}
 }
