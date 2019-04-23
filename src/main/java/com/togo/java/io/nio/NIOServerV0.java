@@ -39,8 +39,10 @@ public class NIOServerV0 {
 				it.remove();
 				if (key.isAcceptable()) {
 
+					accept(key);
 				} else if (key.isReadable()) {
 
+					read(key);
 				}
 			}
 		}
@@ -53,10 +55,24 @@ public class NIOServerV0 {
 		channel.configureBlocking(false);
 		channel.register(this.selector, SelectionKey.OP_READ);
 	}
-	
-	private void read(SelectionKey key) {
-		
+
+	private void read(SelectionKey key) throws IOException {
+
 		SocketChannel channel = (SocketChannel) key.channel();
-//		ByteBuffer buffer = 
+		ByteBuffer buffer = ByteBuffer.allocate(1024);
+		channel.read(buffer);
+		String request = new String(buffer.array()).trim();
+
+		System.out.println("client request : " + request);
+
+		ByteBuffer outBuffer = ByteBuffer.wrap("收到请求".getBytes());
+		channel.write(outBuffer);
+	}
+
+	public static void main(String[] args) throws IOException {
+
+		NIOServerV0 server = new NIOServerV0();
+		server.init();
+		server.start();
 	}
 }
