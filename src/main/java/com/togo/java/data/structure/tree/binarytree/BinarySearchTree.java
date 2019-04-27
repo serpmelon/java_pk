@@ -28,23 +28,49 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
 
 		int compareResult = t.compareTo(r.getElement());
 
-		if(compareResult < 0) 
+		if (compareResult < 0)
 			return contains(t, r.getLeft());
-		if(compareResult > 0)
+		if (compareResult > 0)
 			return contains(t, r.getRight());
-		
+
 		return true;
 	}
 
 	public T findMin() {
 
-		// TODO
-		return null;
+		if (isEmpty())
+			throw new NullPointerException("THE TREE IS NULL");
+
+		return findMin(root).getElement();
+	}
+
+	private BinaryNode<T> findMin(BinaryNode<T> t) {
+
+		if (t == null)
+			return null;
+		if (t.getLeft() == null)
+			return t;
+
+		return findMin(t.getLeft());
 	}
 
 	public T findMax() {
-		// TODO
-		return null;
+
+		if (isEmpty())
+			throw new NullPointerException("THE TREE IS NULL");
+
+		return findMax(root).getElement();
+	}
+
+	private BinaryNode<T> findMax(BinaryNode<T> t) {
+
+		if (t == null)
+			return null;
+
+		while (t.getRight() != null)
+			t = t.getRight();
+
+		return t;
 	}
 
 	public void insert(T t) {
