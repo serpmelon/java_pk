@@ -99,18 +99,43 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
 	}
 
 	private BinaryNode<T> remove(T t, BinaryNode<T> r) {
-		// TODO Auto-generated method stub
-		return null;
+
+		if (r == null)
+			return r;
+
+		int compareResult = t.compareTo(r.getElement());
+
+		if (compareResult < 0) {
+			r.setLeft(remove(t, r.getLeft()));
+		} else if (compareResult > 0) {
+			r.setRight(remove(t, r.getRight()));
+		} else if (r.getLeft() != null && r.getRight() != null) {
+
+			r.setElement(findMin(r.getRight()).getElement());
+			r.setRight(remove(r.getElement(), r.getRight()));
+		} else {
+			r = r.getLeft() != null ? r.getLeft() : r.getRight();
+		}
+
+		return r;
 	}
 
 	public void printTree() {
 
-		printTree(root);
+		if (isEmpty()) {
+			System.out.println("empty tree");
+		} else {
+			printTree(root);
+		}
 	}
 
 	private void printTree(BinaryNode<T> r) {
-		// TODO Auto-generated method stub
 
+		if (r != null) {
+
+			printTree(r.getLeft());
+			System.out.println(r.getElement());
+			printTree(r.getRight());
+		}
 	}
-
 }
