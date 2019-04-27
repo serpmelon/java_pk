@@ -21,9 +21,19 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
 		return contains(t, root);
 	}
 
-	private boolean contains(T t, BinaryNode<T> root2) {
-		// TODO Auto-generated method stub
-		return false;
+	private boolean contains(T t, BinaryNode<T> r) {
+
+		if (r == null)
+			return false;
+
+		int compareResult = t.compareTo(r.getElement());
+
+		if(compareResult < 0) 
+			return contains(t, r.getLeft());
+		if(compareResult > 0)
+			return contains(t, r.getRight());
+		
+		return true;
 	}
 
 	public T findMin() {
@@ -42,7 +52,7 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
 		root = insert(t, root);
 	}
 
-	private BinaryNode<T> insert(T t, BinaryNode<T> root2) {
+	private BinaryNode<T> insert(T t, BinaryNode<T> r) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -52,7 +62,7 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
 		root = remove(t, root);
 	}
 
-	private BinaryNode<T> remove(T t, BinaryNode<T> root2) {
+	private BinaryNode<T> remove(T t, BinaryNode<T> r) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -62,7 +72,7 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
 		printTree(root);
 	}
 
-	private void printTree(BinaryNode<T> root2) {
+	private void printTree(BinaryNode<T> r) {
 		// TODO Auto-generated method stub
 
 	}

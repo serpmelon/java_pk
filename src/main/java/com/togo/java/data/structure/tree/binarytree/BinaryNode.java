@@ -10,7 +10,7 @@ package com.togo.java.data.structure.tree.binarytree;
  */
 public class BinaryNode<T> {
 
-	private T t;
+	private T element;
 	private BinaryNode<T> left;
 	private BinaryNode<T> right;
 
@@ -21,8 +21,33 @@ public class BinaryNode<T> {
 
 	public BinaryNode(T t, BinaryNode<T> left, BinaryNode<T> right) {
 
-		this.t = t;
+		this.element = t;
 		this.left = left;
 		this.right = right;
 	}
+
+	public T getElement() {
+		return element;
+	}
+
+	public void setElement(T element) {
+		this.element = element;
+	}
+
+	public BinaryNode<T> getLeft() {
+		return left;
+	}
+
+	public void setLeft(BinaryNode<T> left) {
+		this.left = left;
+	}
+
+	public BinaryNode<T> getRight() {
+		return right;
+	}
+
+	public void setRight(BinaryNode<T> right) {
+		this.right = right;
+	}
+
 }
