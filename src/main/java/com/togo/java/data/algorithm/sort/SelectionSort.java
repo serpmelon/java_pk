@@ -29,7 +29,7 @@ public class SelectionSort extends AbstractSort {
 	 * 每次查找最小的放到前边，直到查完
 	 */
 	@Override
-	protected void sort(int[] nums) {
+	public void sort(int[] nums) {
 
 		for (int i = 0; i < nums.length; i++) {
 

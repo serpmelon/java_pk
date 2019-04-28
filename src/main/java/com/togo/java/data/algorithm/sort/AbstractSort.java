@@ -18,7 +18,7 @@ package com.togo.java.data.algorithm.sort;
  */
 public abstract class AbstractSort {
 
-	protected abstract void sort(int[] nums);
+	public abstract void sort(int[] nums);
 
 	protected String getName() {
 

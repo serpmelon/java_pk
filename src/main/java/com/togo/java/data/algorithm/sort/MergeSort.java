@@ -26,7 +26,7 @@ public class MergeSort extends AbstractSort {
 	}
 	
 	@Override
-	protected void sort(int[] nums) {
+	public void sort(int[] nums) {
 
 		mergeSort(nums, 0, nums.length - 1);
 	}

@@ -34,7 +34,7 @@ public class BucketSort extends AbstractSort {
 
 	// TODO 还有问题
 	@Override
-	protected void sort(int[] nums) {
+	public void sort(int[] nums) {
 
 		int max = nums[0];
 		int min = nums[0];

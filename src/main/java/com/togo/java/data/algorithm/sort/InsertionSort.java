@@ -27,7 +27,7 @@ public class InsertionSort extends AbstractSort {
 	 * 将当前值插入到前面已经排好序的队列中
 	 */
 	@Override
-	protected void sort(int[] nums) {
+	public void sort(int[] nums) {
 
 		for (int i = 1; i < nums.length; i++) {
 

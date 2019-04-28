@@ -30,7 +30,7 @@ public class QuickSort extends AbstractSort {
 	}
 
 	@Override
-	protected void sort(int[] nums) {
+	public void sort(int[] nums) {
 
 		quickSort(nums, 0, nums.length - 1);
 	}
