@@ -1,5 +1,7 @@
 package com.togo.java.data.structure.tree.binarytree.avltree;
 
+import com.togo.java.data.structure.tree.binarytree.BinaryNode;
+
 public class AvlTree<T extends Comparable<? super T>> {
 
 	private static final int ALLOWED_IMBALANCE = 1;
@@ -29,6 +31,56 @@ public class AvlTree<T extends Comparable<? super T>> {
 		}
 
 		return balance(tree);
+	}
+
+	public AvlNode<T> remove(T element) {
+
+		return remove(element, root);
+	}
+
+	private AvlNode<T> remove(T element, AvlNode<T> t) {
+
+		if (t == null)
+			return t;
+
+		int compareResult = element.compareTo(t.element);
+
+		if (compareResult < 0)
+			t.left = remove(element, t.left);
+		else if (compareResult > 0)
+			t.right = remove(element, t.right);
+		else if (t.left != null && t.right != null) {
+
+			t.element = findMin(t.right).element;
+			t.right = remove(element, t.right);
+		} else {
+			t = t.left != null ? t.left : t.right;
+		}
+
+		return balance(t);
+	}
+
+	public boolean isEmpty() {
+
+		return root == null;
+	}
+
+	public T findMin() {
+
+		if (isEmpty())
+			throw new NullPointerException("THE TREE IS NULL");
+
+		return findMin(root).element;
+	}
+
+	private AvlNode<T> findMin(AvlNode<T> t) {
+
+		if (t == null)
+			return null;
+		if (t.left == null)
+			return t;
+
+		return findMin(t.left);
 	}
 
 	private AvlNode<T> balance(AvlNode<T> tree) {
