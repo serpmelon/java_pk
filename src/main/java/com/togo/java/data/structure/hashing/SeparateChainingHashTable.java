@@ -24,16 +24,31 @@ public class SeparateChainingHashTable<T> {
 
 	public void insert(T t) {
 
+		List<T> whichList = theLists[myhash(t)];
+		if (!whichList.contains(t)) {
+
+			whichList.add(t);
+
+			if (++currentSize > theLists.length)
+				rehash();
+		}
 	}
 
 	public void remove(T t) {
 
+		List<T> whichList = theLists[myhash(t)];
+		if (whichList.contains(t)) {
+
+			whichList.remove(t);
+			currentSize--;
+		}
 	}
 
 	public boolean contains(T t) {
 
-		// TODO
-		return false;
+		List<T> whichList = theLists[myhash(t)];
+
+		return whichList.contains(t);
 	}
 
 	public void makeEmpty() {
