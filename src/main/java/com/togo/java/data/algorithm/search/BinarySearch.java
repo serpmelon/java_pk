@@ -52,4 +52,32 @@ public class BinarySearch {
 
         return -1;
     }
+
+    public int searchLastElement(int[] nums, int target){
+
+        int length = nums.length;
+        int high = length - 1;
+        int low = 0;
+
+        while (low <= high) {
+
+            int mid = low + ((high - low) >> 1);
+
+            if (nums[mid] > target) {
+
+                high = mid - 1;
+            } else if (nums[mid] < target){
+
+                low = mid + 1;
+            } else {
+
+                if ((mid == length - 1) || nums[mid + 1] != target)
+                    return mid;
+                else
+                    low = mid + 1;
+            }
+        }
+
+        return -1;
+    }
 }
