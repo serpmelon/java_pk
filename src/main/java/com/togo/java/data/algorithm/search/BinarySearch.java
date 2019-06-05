@@ -18,7 +18,7 @@ public class BinarySearch {
 
     /**
      * <pre>
-     * desc : 查找出现的第一个制定元素
+     * desc : 查找出现的第一个制定元素的位置
      * @author : taiyn
      * date : 2019/6/5 13:46
      * @param nums, target
@@ -53,7 +53,16 @@ public class BinarySearch {
         return -1;
     }
 
-    public int searchLastElement(int[] nums, int target){
+    /**
+     * <pre>
+     * desc : 查找最后一个指定元素的位置
+     * @author : taiyn
+     * date : 2019/6/5 14:14
+     * @param nums, target
+     * @return int
+     * </pre>
+     */
+    public int searchLastElement(int[] nums, int target) {
 
         int length = nums.length;
         int high = length - 1;
@@ -66,7 +75,7 @@ public class BinarySearch {
             if (nums[mid] > target) {
 
                 high = mid - 1;
-            } else if (nums[mid] < target){
+            } else if (nums[mid] < target) {
 
                 low = mid + 1;
             } else {
@@ -75,6 +84,40 @@ public class BinarySearch {
                     return mid;
                 else
                     low = mid + 1;
+            }
+        }
+
+        return -1;
+    }
+
+    /**
+     * <pre>
+     * desc : 查找第一个大于等于指定元素的位置
+     * @author : taiyn
+     * date : 2019/6/5 14:15
+     * @param [nums, target]
+     * @return int
+     * </pre>
+     */
+    public int searchFirstGreaterOrEqualsElement(int[] nums, int target) {
+
+        int length = nums.length;
+        int high = length - 1;
+        int low = 0;
+
+        while (low <= high) {
+
+            int mid = low + ((high - low) >> 1);
+
+            if (nums[mid] >= target) {
+
+                if ((mid == 0) || nums[mid - 1] < target)
+                    return mid;
+                else
+                    high = mid - 1;
+            } else {
+
+                low = mid + 1;
             }
         }
 
