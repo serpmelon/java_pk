@@ -28,5 +28,11 @@ public class TestSearch {
         BinarySearch search = new BinarySearch();
         int result = search.searchFirstElement(nums, 2);
         System.out.println(result);
+
+        result = search.searchLastElement(nums, 2);
+        System.out.println(result);
+
+        result = search.searchFirstGreaterOrEqualsElement(nums, 1);
+        System.out.println(result);
     }
 }
