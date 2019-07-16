@@ -27,7 +27,7 @@ public class BinaryHeap<T extends Comparable<? super T>> {
      * Duplicates are allowed.
      * @author : taiyn
      * date : 2019-07-16 08:50
-     * @param [t]
+     * @param t the element
      * @return void
      * </pre>
      */
