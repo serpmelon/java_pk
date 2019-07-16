@@ -47,5 +47,6 @@ public class BinaryHeap<T extends Comparable<? super T>> {
     }
 
     private void enlargeArray(int newSize) {
+
     }
 }
