@@ -46,7 +46,81 @@ public class BinaryHeap<T extends Comparable<? super T>> {
         array[hole] = t;
     }
 
+    public boolean isEmpty() {
+
+        return currentSize == 0;
+    }
+
+    public void makeEmpty() {
+
+    }
+
+    /**
+     * <pre>
+     * desc : Remove the smallest item from the priority queue.
+     * @author : taiyn
+     * date : 2019-07-16 13:18
+     * @param []
+     * @return T
+     * </pre>
+     */
+    public T deleteMin() {
+
+        if (isEmpty())
+            throw new RuntimeException();
+
+        T t = findMin();
+        array[1] = array[currentSize--];
+
+        percolateDown(1);
+
+        return t;
+    }
+
+    public T findMin() {
+
+        if (array != null)
+            return array[1];
+
+        return null;
+    }
+
     private void enlargeArray(int newSize) {
 
+    }
+
+    /**
+     * <pre>
+     * desc : Internal method to percolate down in the heap
+     * @author : taiyn
+     * date : 2019-07-16 13:43
+     * @param [hole]
+     * @return void
+     * </pre>
+     */
+    private void percolateDown(int hole) {
+
+        int child = 0;
+        T t = array[hole];
+
+        for (; hole * 2 <= currentSize; hole = child) {
+
+            child = hole * 2;
+
+            // 成立表示右子树更小
+            if (array[child + 1].compareTo(array[child]) < 0) {
+
+                child++;
+            }
+
+            if (array[child].compareTo(t) < 0) {
+
+                array[hole] = array[child];
+            } else {
+                break;
+            }
+        }
+
+        array[hole] = t;
     }
 }
