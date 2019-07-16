@@ -21,6 +21,19 @@ public class BinaryHeap<T extends Comparable<? super T>> {
     private int currentSize;
     private T[] array;
 
+    public BinaryHeap(T[] items) {
+
+        currentSize = items.length;
+        array = (T[]) new Comparable[(currentSize + 2) * 11 / 10];
+
+        int i = 1;
+        for (T t : items)
+            array[i++] = t;
+
+        buildHeap();
+    }
+
+
     /**
      * <pre>
      * desc : Insert into the priority queue, maintaining heap order.
@@ -122,5 +135,11 @@ public class BinaryHeap<T extends Comparable<? super T>> {
         }
 
         array[hole] = t;
+    }
+
+    private void buildHeap() {
+
+        for (int i = currentSize / 2; i > 0; i--)
+            percolateDown(i);
     }
 }
