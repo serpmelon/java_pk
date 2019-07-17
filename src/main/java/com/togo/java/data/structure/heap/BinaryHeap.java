@@ -21,6 +21,16 @@ public class BinaryHeap<T extends Comparable<? super T>> {
     private int currentSize;
     private T[] array;
 
+    public BinaryHeap() {
+
+        this(DEFAULT_CAPACITY);
+    }
+
+    public BinaryHeap(int capacity) {
+
+        array = (T[]) new Comparable[capacity];
+    }
+
     public BinaryHeap(T[] items) {
 
         currentSize = items.length;
@@ -66,6 +76,10 @@ public class BinaryHeap<T extends Comparable<? super T>> {
 
     public void makeEmpty() {
 
+        if (currentSize > DEFAULT_CAPACITY)
+            array = (T[]) new Comparable[currentSize];
+        else
+            array = (T[]) new Comparable[DEFAULT_CAPACITY];
     }
 
     /**
@@ -100,6 +114,18 @@ public class BinaryHeap<T extends Comparable<? super T>> {
 
     private void enlargeArray(int newSize) {
 
+        int size = newSize;
+        if (size > Integer.MAX_VALUE)
+            size = Integer.MAX_VALUE;
+
+        T[] largeArray = (T[]) new Comparable[size];
+        int index = 0;
+        for (T t : array) {
+
+            largeArray[index++] = array[index];
+        }
+
+        array = largeArray;
     }
 
     /**
