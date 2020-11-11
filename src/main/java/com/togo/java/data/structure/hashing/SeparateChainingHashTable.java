@@ -2,6 +2,7 @@ package com.togo.java.data.structure.hashing;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.PriorityQueue;
 
 public class SeparateChainingHashTable<T> {
 
@@ -100,5 +101,11 @@ public class SeparateChainingHashTable<T> {
         }
 
         return true;
+    }
+
+    public static void main(String[] args) {
+
+//        PriorityQueue
+        System.out.println(Integer.toBinaryString(Integer.MIN_VALUE));
     }
 }
